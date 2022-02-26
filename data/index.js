@@ -9,13 +9,18 @@ const reviews = []
 // tidy up data
 contentfulExport.entries.forEach((p) => {
 
-  // const prettyDescription = p.fields.description.content.flat()
-
+  
   switch (p.sys.contentType.sys.id) {
     case 'product':
+      const prettyDescription = p.fields.description['en-US'].content.filter((c) => {
+        return c.content[0].value
+      }).map((c) => {
+        return c.content[0].value
+      })
+      console.log(prettyDescription)
       products.push({
         title: p.fields.title['en-US'],
-        // description: prettyDescription // p.fields.description['en-US'].content[0].content[0].value
+        description: prettyDescription,
         price: p.fields.price,
         weight: p.fields.weight,
         slug: p.fields.slug
@@ -46,6 +51,6 @@ fs.writeFileSync('products.json', JSON.stringify(products))
 fs.writeFileSync('reviews.json', JSON.stringify(reviews)) 
 fs.writeFileSync('blogPosts.json', JSON.stringify(blogPosts)) 
 
-console.log(products) 
+// console.log(products) 
 // console.log(reviews)
 // console.log(blogPosts)
