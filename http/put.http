@@ -1,0 +1,11 @@
+PUT http://localhost:7070/products/12345
+Content-Type: application/json
+
+{
+    "title": "I am a shiny new product",
+    "description": "I am a test description",
+    "price": 9.50,
+    "weight": 0.2,
+    "slug": "shiny-new-product",
+    "metadata": ""
+}
