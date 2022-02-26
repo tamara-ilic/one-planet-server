@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 7070
 require('dotenv').config()
 const connectToDB = require('./models')
 const Product = require('./models/Product')
+const BlogPost = require('./models/BlogPost')
+const Review = require('./models/Review')
 const cors = require('cors')
 
 app.use(cors())
@@ -23,5 +25,6 @@ app
     })
 
 connectToDB().then(() => {
-    app.listen(PORT, () => console.log('Server running'))    
+
+    app.listen(PORT, () => console.log('Server running'))
 })

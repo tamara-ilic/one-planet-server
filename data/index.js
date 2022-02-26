@@ -17,7 +17,7 @@ contentfulExport.entries.forEach((p) => {
       }).map((c) => {
         return c.content[0].value
       })
-      console.log(prettyDescription)
+      //console.log(prettyDescription)
       products.push({
         title: p.fields.title['en-US'],
         description: prettyDescription,
@@ -37,13 +37,21 @@ contentfulExport.entries.forEach((p) => {
       }) 
       break
     case 'blog':
+      const prettyBlog = p.fields.blogText['en-US'].content.map((b) => {
+        return b.content
+        .filter(str => str.value?.length)
+        .map(v => v.value)
+        .map(str => str === "" ? "\n": str).join('')
+       })
+      //console.log(prettyBlog)
       blogPosts.push({
         blogTitle: p.fields.blogTitle['en-US'],
-        blogText: p.fields.blogText // an object that needs to be broken down
+        blogText: prettyBlog // an object that needs to be broken down
       })
       break
     default:
       console.log('unrecognised content type')
+ 
   }
 }) 
 
@@ -54,3 +62,5 @@ fs.writeFileSync('blogPosts.json', JSON.stringify(blogPosts))
 // console.log(products) 
 // console.log(reviews)
 // console.log(blogPosts)
+
+console.log(blogPosts)
