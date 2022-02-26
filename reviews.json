@@ -1,1 +1,16 @@
-[{"headline":" Great Service","review":{"en-US":"Not only were our products delivered in a timely manner, but the customer agents were extremely helpful and knowledgeable about all the products. They were able to help me make the best decision for my needs!"},"reviewer":{"en-US":"Some gal"},"rating":{"en-US":5}},{"headline":"Highly Recommended!!","review":{"en-US":"These products deliver what they promise!\nThe quality is noticeable and the designs are fantastic. I can't believe I didn't know about these products sooner!\nI've started buying gifts from One Planet for all my family and friends because I can't get enough!"},"reviewer":{"en-US":"Some guy"},"rating":{"en-US":5}},{"headline":"Absolutely Stunning!","review":{"en-US":"The products look even better in person than in the website pictures! I am so in love with my wooden spoon that I can't imagine ever having gone without it.\nThe ordering process was quick and easy, and my products were delivered quickly. If you're on the fence about whether to buy from here or not, do yourself a favor and just order – you won't regret it!"},"reviewer":{"en-US":"Talulah J."},"rating":{"en-US":5}}]
+[{
+  "headline": " Great Service",
+  "review":  "Not only were our products delivered in a timely manner, but the customer agents were extremely helpful and knowledgeable about all the products. They were able to help me make the best decision for my needs!",
+  "reviewer":  "Some gal",
+  "rating":  5
+}, {
+  "headline": "Highly Recommended!!",
+  "review":  "These products deliver what they promise!\nThe quality is noticeable and the designs are fantastic. I can't believe I didn't know about these products sooner!\nI've started buying gifts from One Planet for all my family and friends because I can't get enough!",
+  "reviewer":  "Some guy",
+  "rating":  5
+}, {
+  "headline": "Absolutely Stunning!",
+  "review":  "The products look even better in person than in the website pictures! I am so in love with my wooden spoon that I can't imagine ever having gone without it.\nThe ordering process was quick and easy, and my products were delivered quickly. If you're on the fence about whether to buy from here or not, do yourself a favor and just order – you won't regret it!",
+  "reviewer":  "Talulah J.",
+  "rating":  5
+}]
