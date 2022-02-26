@@ -9,7 +9,6 @@ const reviews = []
 // tidy up data
 contentfulExport.entries.forEach((p) => {
 
-  
   switch (p.sys.contentType.sys.id) {
     case 'product':
       const prettyDescription = p.fields.description['en-US'].content.filter((c) => {

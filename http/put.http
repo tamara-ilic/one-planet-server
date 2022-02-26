@@ -1,0 +1,12 @@
+PUT http://localhost:7070/products/
+// would need to add real product id above to update
+Content-Type: application/json
+
+{
+    "title": "I am an updated title",
+    "description": "I am a new test description",
+    "price": 9.50,
+    "weight": 0.2,
+    "slug": "shiny-updated-product",
+    "metadata": ""
+}
