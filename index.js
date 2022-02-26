@@ -25,6 +25,31 @@ app
     })
 
 app
+    .route('/products/:id')
+    .get(async (request, response) => {
+        const product = await Product.find({ _id: request.params.id })
+        response.json(product)
+    })
+    .put(async (request, response) => {
+        const product = await Product.findOneAndUpdate(
+            { _id: request.params.id },
+            request.body,
+            // sends back the updated version, which is not the default
+            {
+                new: true
+            }
+        )
+        response.send(product)
+    })    
+    .delete(async (request, response) => {
+        const product = await Product.findByIdAndDelete(
+            { _id: request.params.id },
+            request.body
+        )
+        response.send(product)
+    })    
+
+app
     .route('/reviews')
     .get(async (request, response) => {
         const reviews = await Review.find({})
