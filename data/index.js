@@ -20,7 +20,7 @@ contentfulExport.entries.forEach((p) => {
         weight: p.fields.weight,
         slug: p.fields.slug
         // metadata: p.fields.
-        // prod_collectio: p.fields.
+        // prod_collection: p.fields.
       }) 
       break 
     case 'reviews':
