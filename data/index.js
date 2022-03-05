@@ -27,7 +27,7 @@ contentfulExport.entries.forEach((p) => {
         weight: p.fields.weight,
         slug: p.fields.slug,
         images: p.fields.productMedia["en-US"].map(m => m.sys.id).map(id => {
-          return assets.find(a => a.sys.id === id).fields.file["en-US"].fileName.replaceAll(' ', '').replaceAll('_', '-').replaceAll('--', '-').replaceAll('reusable', '')
+          return assets.find(a => a.sys.id === id).fields.file["en-US"].fileName.replaceAll(' ', '').replaceAll('_', '-').replaceAll('--', '-').replaceAll('-reusable', '')
       })
         // metadata: p.fields.
         // prod_collection: p.fields.
