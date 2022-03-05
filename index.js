@@ -44,9 +44,9 @@ app
     })
 
 app
-    .route('/products/:id')
+    .route('/products/:slug')
     .get(async (request, response) => {
-        const product = await Product.find({ _id: request.params.id })
+        const product = await Product.find({ slug: request.params.slug })
         response.json(product)
     })
     .put(async (request, response) => {

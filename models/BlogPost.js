@@ -4,7 +4,8 @@ const BlogPostSchema = new mongoose.Schema(
     {
         blogTitle: {required: true, type: String},
         blogText: {required: true, type: String},
-        metadata: {required: false, type: String}
+        metadata: {required: false, type: String},
+        slug: {required: true, type: String}
     },
     { timestamps: true }
 )

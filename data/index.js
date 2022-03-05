@@ -5,6 +5,15 @@ const contentfulExport = JSON.parse(fs.readFileSync('data/src.json', 'utf-8'))
 
 const assets = contentfulExport.assets
 
+function slugify(text) {
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+
 const products = [] 
 const blogPosts = [] 
 const reviews = []
@@ -25,7 +34,7 @@ contentfulExport.entries.forEach((p) => {
         description: prettyDescription,
         price: p.fields.price['en-US'],
         weight: p.fields.weight,
-        slug: p.fields.slug,
+        slug: slugify(p.fields.title['en-US']),
         images: p.fields.productMedia["en-US"].map(m => m.sys.id).map(id => {
           return assets.find(a => a.sys.id === id).fields.file["en-US"].fileName.replaceAll(' ', '').replaceAll('_', '-').replaceAll('--', '-').replaceAll('-reusable', '')
       })
@@ -38,7 +47,8 @@ contentfulExport.entries.forEach((p) => {
         headline: p.fields.headline['en-US'],
         review: p.fields.review,
         reviewer: p.fields.reviewer,
-        rating: p.fields.rating
+        rating: p.fields.rating,
+        slug: slugify(p.fields.headline['en-US']),
       }) 
       break
     case 'blog':
@@ -51,7 +61,8 @@ contentfulExport.entries.forEach((p) => {
       //console.log(prettyBlog)
       blogPosts.push({
         blogTitle: p.fields.blogTitle['en-US'],
-        blogText: prettyBlog // an object that needs to be broken down
+        blogText: prettyBlog,
+        slug: slugify(p.fields.blogTitle['en-US']),
       })
       break
     default:
@@ -64,6 +75,6 @@ fs.writeFileSync('products.json', JSON.stringify(products))
 fs.writeFileSync('reviews.json', JSON.stringify(reviews)) 
 fs.writeFileSync('blogPosts.json', JSON.stringify(blogPosts)) 
 
-console.log(products[0].price) 
+console.log(products[0].slug) 
 // console.log(reviews)
 // console.log(blogPosts)

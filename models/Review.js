@@ -6,7 +6,8 @@ const ReviewSchema = new mongoose.Schema(
         review: {required: true, type: String},
         reviewer: {required: true, type: String},
         rating: {required: true, type: Number},
-        metadata: {required: false, type: String}
+        metadata: {required: false, type: String},
+        slug: {required: true, type: String}
     },
     { timestamps: true }
 )
