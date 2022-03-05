@@ -10,6 +10,14 @@ const cors = require('cors')
 
 app.use(cors())
 
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config()
+}
+
+const domainsFromEnv = process.env.CORS_DOMAINS || ""
+
+const whitelist = domainsFromEnv.split(",").map(item => item.trim())
+
 app.use(express.static('public'))
 
 app.use((request, response, next) => {
