@@ -83,6 +83,5 @@ app
 })
 
 connectToDB().then(() => {
-
     app.listen(PORT, () => console.log('Server running'))
 })
