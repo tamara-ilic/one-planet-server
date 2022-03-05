@@ -23,7 +23,7 @@ contentfulExport.entries.forEach((p) => {
       products.push({
         title: p.fields.title['en-US'],
         description: prettyDescription,
-        price: p.fields.price,
+        price: p.fields.price['en-US'],
         weight: p.fields.weight,
         slug: p.fields.slug,
         images: p.fields.productMedia["en-US"].map(m => m.sys.id).map(id => {
@@ -64,6 +64,6 @@ fs.writeFileSync('products.json', JSON.stringify(products))
 fs.writeFileSync('reviews.json', JSON.stringify(reviews)) 
 fs.writeFileSync('blogPosts.json', JSON.stringify(blogPosts)) 
 
-console.log(products) 
+console.log(products[0].price) 
 // console.log(reviews)
 // console.log(blogPosts)
