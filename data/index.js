@@ -1,10 +1,13 @@
+const { acceptsCharsets } = require('express/lib/request')
 const fs = require('fs')
 
 const contentfulExport = JSON.parse(fs.readFileSync('data/src.json', 'utf-8'))
 
+const assets = contentfulExport.assets
+
 const products = [] 
 const blogPosts = [] 
-const reviews = [] 
+const reviews = []
 
 // tidy up data
 contentfulExport.entries.forEach((p) => {
@@ -22,7 +25,10 @@ contentfulExport.entries.forEach((p) => {
         description: prettyDescription,
         price: p.fields.price,
         weight: p.fields.weight,
-        slug: p.fields.slug
+        slug: p.fields.slug,
+        images: p.fields.productMedia["en-US"].map(m => m.sys.id).map(id => {
+          return assets.find(a => a.sys.id === id).fields.file["en-US"].fileName.replaceAll(' ', '').replaceAll('_', '-').replaceAll('--', '-').replaceAll('reusable', '')
+      })
         // metadata: p.fields.
         // prod_collection: p.fields.
       }) 
@@ -58,8 +64,6 @@ fs.writeFileSync('products.json', JSON.stringify(products))
 fs.writeFileSync('reviews.json', JSON.stringify(reviews)) 
 fs.writeFileSync('blogPosts.json', JSON.stringify(blogPosts)) 
 
-// console.log(products) 
+console.log(products) 
 // console.log(reviews)
 // console.log(blogPosts)
-
-console.log(blogPosts)

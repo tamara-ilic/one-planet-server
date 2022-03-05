@@ -10,6 +10,8 @@ const cors = require('cors')
 
 app.use(cors())
 
+app.use(express.static('public'))
+
 app.use((request, response, next) => {
     console.log(request.method, request.path)
     next()
